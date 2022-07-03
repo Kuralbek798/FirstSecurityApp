@@ -1,12 +1,14 @@
 package com.example.firstsecurityapp.controllers;
 
 import com.example.firstsecurityapp.models.Person;
+import com.example.firstsecurityapp.services.PersonDetailsService;
 import com.example.firstsecurityapp.services.RegistrationService;
 import com.example.firstsecurityapp.util.PersonValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,11 +20,14 @@ import javax.validation.Valid;
 @RequestMapping("/auth")
 public class AuthController {
 
+
     private final PersonValidator personValidator;
     private final RegistrationService registrationService;
 
+
     @Autowired
     public AuthController(PersonValidator personValidator, RegistrationService registrationService) {
+
         this.personValidator = personValidator;
         this.registrationService = registrationService;
     }
@@ -37,14 +42,15 @@ public class AuthController {
         return "auth/registration";
     }
     @PostMapping("/registration")
-    public String performRegistration(@ModelAttribute("Person") @Valid Person person,
+    public String performRegistration(@ModelAttribute("person") @Valid Person person,
                                       BindingResult bindingResult){
         personValidator.validate(person,bindingResult);
 
         if(bindingResult.hasErrors())
             return "/auth/registration";
+
         registrationService.register(person);
-      return "redirect:/auth/login";
+         return "redirect:/auth/login";
     }
 
 

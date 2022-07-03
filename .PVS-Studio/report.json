@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "warnings": [
+    {
+      "code": "V061",
+      "cwe": 0,
+      "level": 0,
+      "positions": [],
+      "message": "Unable to download PVS-Studio Java analyzer core.\nDirect download failed: Read timed out.\nIf you use proxy, you should specify proxy credentials (user and password, for example, -Dhttp.proxyUser, -Dhttp.proxyPassword) to enable the analyzer to download and update its core.",
+      "stacktrace": [
+        "com.pvsstudio.PvsStudioDownloader.tryExecuteAction(PvsStudioDownloader.java:436)",
+        "com.pvsstudio.PvsStudioDownloader.initCore(PvsStudioDownloader.java:558)",
+        "com.pvsstudio.intellij.AnalyzeTaskImpl.run(AnalyzeTaskImpl.java:101)",
+        "com.intellij.openapi.progress.impl.CoreProgressManager.startTask(CoreProgressManager.java:442)",
+        "com.intellij.openapi.progress.impl.ProgressManagerImpl.startTask(ProgressManagerImpl.java:114)",
+        "com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcessWithProgressAsynchronously$5(CoreProgressManager.java:493)",
+        "com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$3(ProgressRunner.java:244)",
+        "com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:189)",
+        "com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$12(CoreProgressManager.java:608)",
+        "com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:683)",
+        "com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:639)",
+        "com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:607)",
+        "com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)",
+        "com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:176)",
+        "com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$4(ProgressRunner.java:244)",
+        "java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1700)",
+        "java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)",
+        "java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)",
+        "java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:668)",
+        "java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:665)",
+        "java.base/java.security.AccessController.doPrivileged(Native Method)",
+        "java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:665)",
+        "java.base/java.lang.Thread.run(Thread.java:829)"
+      ],
+      "projects": [],
+      "favorite": false,
+      "falseAlarm": false
+    }
+  ]
+}

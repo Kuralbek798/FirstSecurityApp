@@ -19,16 +19,16 @@ public class PersonValidator implements Validator{
 
 
     @Override
-    public boolean supports(Class<?> clazz) {
-        return Person.class.equals(clazz);
+    public boolean supports(Class<?> aClass) {
+        return Person.class.equals(aClass);
     }
 
     @Override
-    public void validate(Object target, Errors errors) {
-       Person person = (Person)target;
+    public void validate(Object o , Errors errors) {
+       Person person = (Person)o;
 
        if(personValidateService.findByNamePostMethod(person.getUsername()).isPresent())
-           errors.rejectValue("username", "Пользователь с таким именем уже существует");
+           errors.rejectValue("username", "", "Пользователь с таким именем уже существует");
 
     }
 }
