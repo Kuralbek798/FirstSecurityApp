@@ -1,6 +1,7 @@
 package com.example.firstsecurityapp.controllers;
 
 import com.example.firstsecurityapp.models.Person;
+import com.example.firstsecurityapp.services.RegistrationService;
 import com.example.firstsecurityapp.util.PersonValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,12 @@ import javax.validation.Valid;
 public class AuthController {
 
     private final PersonValidator personValidator;
+    private final RegistrationService registrationService;
 
     @Autowired
-    public AuthController(PersonValidator personValidator) {
+    public AuthController(PersonValidator personValidator, RegistrationService registrationService) {
         this.personValidator = personValidator;
+        this.registrationService = registrationService;
     }
 
     @GetMapping("/login")
@@ -37,7 +40,11 @@ public class AuthController {
     public String performRegistration(@ModelAttribute("Person") @Valid Person person,
                                       BindingResult bindingResult){
         personValidator.validate(person,bindingResult);
-      return "auth/registration";
+
+        if(bindingResult.hasErrors())
+            return "/auth/registration";
+        registrationService.register(person);
+      return "redirect:/auth/login";
     }
 
 
